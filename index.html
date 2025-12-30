@@ -1,0 +1,108 @@
+<html><head><base href="https://iomt.mil" />
+<title>IoMT Command Center - Strategic Intelligence Interface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0"
+  }
+}
+</script>
+</head>
+<body>
+  <header>
+    <div class="header-branding">
+      <div class="logo-small">IoMT</div>
+      <div class="title-group">
+        <h1 style="margin:0; font-size: 1.2rem;">Command Center v4.2</h1>
+        <p style="margin:0; font-size: 0.7rem; color: #64748b;">SECURE INTEL CHANNEL / ALPHA-6</p>
+      </div>
+    </div>
+    <div class="system-status">
+      <div class="status-item">
+        <span class="status-label">UPTIME</span>
+        <span class="status-value" id="system-uptime">0s</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">LATENCY</span>
+        <span class="status-value" id="system-latency">--ms</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">AUTH</span>
+        <span class="status-value" style="color: #166534;">VERIFIED</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <!-- Primary Intelligence Feed (Chat) -->
+    <section class="card" id="chat-interface">
+      <h2 style="margin-top:0; font-size: 1rem; border-bottom: 1px solid var(--border-ui); padding-bottom: 0.5rem;">Tactical Assistant Feed</h2>
+      <div id="chat-log" role="log" aria-live="polite">
+        <div class="chat-message model-message">
+          <div class="msg-header">
+            <span class="msg-sender">[ INTEL_FEED ]</span>
+            <span class="msg-time">SYSTEM_INIT</span>
+          </div>
+          <div class="msg-content">Welcome, Operator. Intelligence feed is live. Requesting instructions for IoMT analysis.</div>
+        </div>
+      </div>
+      
+      <div id="error-message" style="display:none;"></div>
+      
+      <div id="loader" class="loader" style="display:none;">
+        <div class="spinner"></div>
+        <p id="loader-text" style="margin:0;">Initializing Link...</p>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="question-input" placeholder="Query battlefield intel, logistics, or sensor tech..." aria-label="Enter tactical query">
+        <button id="ask-button" class="btn-primary">TRANSMIT</button>
+      </div>
+    </section>
+
+    <!-- Side Intelligence Assets -->
+    <aside class="side-column">
+      <section class="card imaging-card">
+        <h2 style="margin-top:0; font-size: 0.9rem;">Tactical Visualization</h2>
+        <p style="font-size: 0.75rem; color: #64748b;">Generate conceptual renderings of IoMT assets.</p>
+        
+        <div id="image-error-message" style="display:none;"></div>
+        
+        <div class="input-group" style="flex-direction: column;">
+          <input type="text" id="image-prompt-input" placeholder="Describe asset (e.g., drone swarm in mountains)" style="width: 100%; margin-bottom: 0.5rem;">
+          <button id="generate-image-button" class="btn-primary" style="width: 100%;">GENERATE RENDER</button>
+        </div>
+
+        <div id="image-loader" class="loader" style="display:none; justify-content: center; margin-top: 1rem;">
+          <div class="spinner"></div>
+          <p style="margin:0;">Imaging...</p>
+        </div>
+
+        <div id="image-container">
+          <p style="font-size: 0.7rem; color: #94a3b8;">NO RENDER ACTIVE</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 style="margin-top:0; font-size: 0.9rem;">IoMT Fundamentals</h2>
+        <ul style="font-size: 0.8rem; padding-left: 1.2rem; color: var(--text-main); margin-bottom: 0;">
+          <li>Real-time sensor fusion</li>
+          <li>Edge computing in contested zones</li>
+          <li>AI-driven supply chain resilience</li>
+          <li>Soldier-as-a-Node (SaaN) architecture</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer style="text-align:center; padding: 2rem; color: #94a3b8; font-size: 0.7rem;">
+    CONFIDENTIAL // NOFORN // SUBJECT TO AR 380-5
+  </footer>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>
